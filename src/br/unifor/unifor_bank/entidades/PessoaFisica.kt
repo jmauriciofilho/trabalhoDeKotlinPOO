@@ -5,6 +5,4 @@ class PessoaFisica(
         nome: String,
         email: String,
         senha: String,
-        contas: List<Conta>,
-        val cpf:String) : Pessoa(id, nome, email, senha, contas) {
-}
+        val cpf:String) : Pessoa(id, nome, email, senha)

@@ -6,5 +6,5 @@ class PessoaJuridica(
         email: String,
         senha: String,
         contas: List<Conta>,
-        val cnpj:String) : Pessoa(id, nome, email, senha, contas) {
+        val cnpj:String) : Pessoa(id, nome, email, senha) {
 }
