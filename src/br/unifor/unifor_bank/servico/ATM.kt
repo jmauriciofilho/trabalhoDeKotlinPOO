@@ -16,8 +16,9 @@ class ATM {
                 println("Informe sua senha:")
                 val senha = readLine()
                 if (senha == conta.cliente.senha){
+                    var servicos = ArrayList<Servico>()
                     do {
-                        println("Selecione entre as seguintes opções: 1 - Saque, 2 - Tranferencia, 3 - Deposito, 4 - Saldo, 0 - sair")
+                        println("Selecione entre as seguintes opções: 1 - Saque, 2 - Tranferencia, 3 - Deposito, 4 - Saldo, 5 - Extrato, 0 - sair")
                         val opcao = readLine()?.toInt()
                         var y = 0
                         when (opcao){
@@ -27,13 +28,14 @@ class ATM {
                                 if (valorSacado != null){
                                     val saque = Saque(conta, valorSacado)
                                     saque.executar()
-                                    x = 5
-                                    y = 5
+                                    servicos.add(saque)
+                                    x = 6
+                                    y = 6
                                 }else{
                                     println("Erro na operação!")
                                     println("Tente novamente!")
-                                    x = 5
-                                    y = 5
+                                    x = 6
+                                    y = 6
                                 }
                             }
                             2 -> {
@@ -42,13 +44,14 @@ class ATM {
                                 if (valorTransferencia != null){
                                     val transferencia = Transferencia(conta, conta2, valorTransferencia)
                                     transferencia.executar()
-                                    x = 5
-                                    y = 5
+                                    servicos.add(transferencia)
+                                    x = 6
+                                    y = 6
                                 }else{
                                     println("Erro na operação!")
                                     println("Tente novamente!")
-                                    x = 5
-                                    y = 5
+                                    x = 6
+                                    y = 6
                                 }
                             }
                             3 -> {
@@ -57,20 +60,27 @@ class ATM {
                                 if (valorDeposito != null){
                                     val deposito = Deposito(conta, valorDeposito)
                                     deposito.executar()
-                                    x = 5
-                                    y = 5
+                                    servicos.add(deposito)
+                                    x = 6
+                                    y = 6
                                 }else{
                                     println("Erro na operação!")
                                     println("Tente novamente!")
-                                    x = 5
-                                    y = 5
+                                    x = 6
+                                    y = 6
                                 }
                             }
                             4 -> {
                                 val saldo = Saldo(conta)
                                 saldo.executar()
-                                x = 5
-                                y = 5
+                                x = 6
+                                y = 6
+                            }
+                            5 -> {
+                                val extrato = Extrato(servicos, conta)
+                                extrato.executar()
+                                x = 6
+                                y = 6
                             }
                             0 -> {
                                 x = 0
